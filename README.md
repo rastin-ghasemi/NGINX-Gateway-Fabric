@@ -86,3 +86,31 @@ spec:
 kubectl get gateways -n nginx-gateway
 kubectl describe gateway nginx-gateway -n nginx-gateway
 ```
+5. ** Expose the service(frontend-svc) on the / path by creating an HTTPRoute named frontend-route.**
+```bash
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: frontend-route
+  namespace: default
+spec:
+  parentRefs:
+    - name: nginx-gateway           # Name of the Gateway
+      namespace: nginx-gateway      # Namespace where the Gateway is deployed
+      sectionName: http             # Attach to the 'http' listener
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: frontend-svc
+          port: 80
+```
+parentRefs attaches the route to the nginx-gateway Gateway in the nginx-gateway namespace, specifically to the http listener.
+The rule matches all requests with a path prefix of / and forwards them to the frontend-svc service on port 80.
+## Verify
+```bash
+kubectl get httproute frontend-route 
+kubectl describe httproute frontend-route
+```
