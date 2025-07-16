@@ -25,7 +25,7 @@ kubectl apply -f https://raw.githubusercontent.com/nginx/nginx-gateway-fabric/v1
 #customresourcedefinition.apiextensions.k8s.io/upstreamsettingspolicies.gateway.nginx.org created
 ```
 
-3. **Deploy NGINX Gateway Fabric**
+3. **Deploy NGINX Gateway Fabric Class**
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/nginx/nginx-gateway-fabric/v1.6.1/deploy/nodeport/deploy.yaml
 # Result:
