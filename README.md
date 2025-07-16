@@ -60,6 +60,6 @@ kubectl patch svc nginx-gateway -n nginx-gateway --type='json' -p='[
 
 ```
 ## Check Gatewaye class 
-``bash
+```bash
 kubectl get gc
-``
+``` 
