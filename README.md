@@ -81,3 +81,8 @@ spec:
         namespaces: 
           from: All
 ```
+## To verify the succesfull deployment, run the commands below:
+```bash
+kubectl get gateways -n nginx-gateway
+kubectl describe gateway nginx-gateway -n nginx-gateway
+```
