@@ -63,4 +63,21 @@ kubectl patch svc nginx-gateway -n nginx-gateway --type='json' -p='[
 ```bash
 kubectl get gc
 ```
-4. **Now We Create Our Gateway That Listen On Port 80**:
+4. **Now We Create Our Gateway That Listen On Port 80 And Accecpt All Namespaces**:
+
+```bash
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: nginx-gateway
+  namespace: nginx-gateway
+spec:
+  gatewayClassName: nginx
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes: 
+        namespaces: 
+          from: All
+```
