@@ -62,4 +62,5 @@ kubectl patch svc nginx-gateway -n nginx-gateway --type='json' -p='[
 ## Check Gatewaye class 
 ```bash
 kubectl get gc
-``` 
+```
+4. **Now We Create Our Gateway That Listen On Port 80**:
